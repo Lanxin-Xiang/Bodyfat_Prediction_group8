@@ -147,9 +147,14 @@ ui <- fluidPage(
     ),
     hr(),
     fluidRow(
-        column(6,
+        column(5,
                textOutput("Bodyfat",container=h3),
                verbatimTextOutput("bodyfat")),
+               textOutput("table",container = h6),
+               textOutput("table1",container = h6),
+               textOutput("table2",container = h6),
+               textOutput("table3",container = h6),
+               textOutput("table4",container = h6),
     ),
     actionButton(
         inputId = "calculate",
@@ -157,6 +162,7 @@ ui <- fluidPage(
         style = "pill", 
         color = "danger"
     )
+    
   
 )
 
@@ -200,6 +206,21 @@ server <- function(input, output) {
             calculate_text = f(input)
         }
         calculate_text
+    })
+    output$table <- renderText({
+        "Reference Sheet"
+    })
+    output$table1 <- renderText({
+        "6%~14%: Athletes"
+    })
+    output$table2 <- renderText({
+        "14%~18%: Fit"
+    })
+    output$table3 <- renderText({
+        "18%~25%: Average"
+    })
+    output$table4 <- renderText({
+        "25%+: Obese"
     })
 }
 
